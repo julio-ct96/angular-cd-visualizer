@@ -1,0 +1,110 @@
+// ==========================================================================
+// _glass-tokens.scss
+// Tokens especificos del efecto Glassmorphism.
+// NO genera CSS. Solo define variables.
+// ==========================================================================
+
+@use 'variables' as vars;
+
+// --------------------------------------------------------------------------
+// SUPERFICIES GLASS (base blanca)
+// --------------------------------------------------------------------------
+
+$glass-bg-subtle:     rgba(vars.$white, 0.03);
+$glass-bg-light:      rgba(vars.$white, 0.05);
+$glass-bg-base:       rgba(vars.$white, 0.08);
+$glass-bg-standard:   rgba(vars.$white, 0.10);
+$glass-bg-medium:     rgba(vars.$white, 0.12);
+$glass-bg-prominent:  rgba(vars.$white, 0.15);
+$glass-bg-solid:      rgba(vars.$white, 0.20);
+$glass-bg-opaque:     rgba(vars.$white, 0.25);
+
+// --------------------------------------------------------------------------
+// SUPERFICIES GLASS OSCURAS (base negra)
+// --------------------------------------------------------------------------
+
+$glass-bg-dark-subtle:  rgba(vars.$black, 0.15);
+$glass-bg-dark-medium:  rgba(vars.$black, 0.30);
+$glass-bg-dark-heavy:   rgba(vars.$black, 0.50);
+$glass-bg-dark-opaque:  rgba(17, 25, 40, 0.85);
+
+// --------------------------------------------------------------------------
+// SUPERFICIES GLASS TINTADAS
+// --------------------------------------------------------------------------
+
+$glass-bg-success:      rgba(vars.$emerald-500, 0.12);
+$glass-border-success:  rgba(vars.$emerald-500, 0.25);
+
+$glass-bg-warning:      rgba(vars.$amber-500, 0.12);
+$glass-border-warning:  rgba(vars.$amber-500, 0.25);
+
+$glass-bg-error:        rgba(vars.$red-500, 0.12);
+$glass-border-error:    rgba(vars.$red-500, 0.25);
+
+$glass-bg-info:         rgba(vars.$blue-500, 0.12);
+$glass-border-info:     rgba(vars.$blue-500, 0.25);
+
+$glass-bg-primary-tint:   rgba(vars.$indigo-400, 0.12);
+$glass-border-primary-tint: rgba(vars.$indigo-400, 0.25);
+
+$glass-bg-accent-tint:    rgba(vars.$cyan-400, 0.12);
+$glass-border-accent-tint:  rgba(vars.$cyan-400, 0.25);
+
+// --------------------------------------------------------------------------
+// BORDES GLASS
+// --------------------------------------------------------------------------
+
+$glass-border-invisible: rgba(vars.$white, 0.04);
+$glass-border-subtle:    rgba(vars.$white, 0.08);
+$glass-border-default:   rgba(vars.$white, 0.12);
+$glass-border-visible:   rgba(vars.$white, 0.18);
+$glass-border-strong:    rgba(vars.$white, 0.25);
+$glass-border-hover:     rgba(vars.$white, 0.30);
+$glass-border-focus:     rgba(vars.$white, 0.40);
+$glass-border-active:    rgba(vars.$white, 0.50);
+
+// --------------------------------------------------------------------------
+// SOMBRAS GLASS
+// --------------------------------------------------------------------------
+
+$glass-shadow-subtle:    0 0.25rem 1rem rgba(vars.$black, 0.08);
+$glass-shadow-default:   0 0.5rem 2rem rgba(31, 38, 135, 0.25);
+$glass-shadow-elevated:  0 0.5rem 2rem rgba(31, 38, 135, 0.37);
+$glass-shadow-prominent: 0 1rem 3rem rgba(31, 38, 135, 0.45);
+$glass-shadow-modal:     0 1.25rem 3.75rem rgba(vars.$black, 0.3), inset 0 0.0625rem 0.0625rem rgba(vars.$white, 0.4);
+$glass-shadow-inset:     inset 0 0.0625rem 0.0625rem rgba(vars.$white, 0.3);
+$glass-shadow-layered:   0 0.5rem 2rem rgba(vars.$black, 0.1), inset 0 0.0625rem 0.0625rem rgba(vars.$white, 0.3);
+
+// --------------------------------------------------------------------------
+// NIVELES DE GLASS
+// --------------------------------------------------------------------------
+
+// Level 1: Subtle
+$glass-level-1-bg:     $glass-bg-subtle;
+$glass-level-1-blur:   0.5rem;      // 8px
+$glass-level-1-border: $glass-border-subtle;
+$glass-level-1-shadow: $glass-shadow-subtle;
+
+// Level 2: Standard
+$glass-level-2-bg:     $glass-bg-base;
+$glass-level-2-blur:   0.75rem;     // 12px
+$glass-level-2-border: $glass-border-default;
+$glass-level-2-shadow: $glass-shadow-default;
+
+// Level 3: Medium
+$glass-level-3-bg:     $glass-bg-standard;
+$glass-level-3-blur:   1rem;        // 16px
+$glass-level-3-border: $glass-border-visible;
+$glass-level-3-shadow: $glass-shadow-elevated;
+
+// Level 4: Prominent
+$glass-level-4-bg:     $glass-bg-prominent;
+$glass-level-4-blur:   1.25rem;     // 20px
+$glass-level-4-border: $glass-border-visible;
+$glass-level-4-shadow: $glass-shadow-elevated;
+
+// Level 5: Maximum
+$glass-level-5-bg:     $glass-bg-solid;
+$glass-level-5-blur:   1.5rem;      // 24px
+$glass-level-5-border: $glass-border-strong;
+$glass-level-5-shadow: $glass-shadow-prominent;
