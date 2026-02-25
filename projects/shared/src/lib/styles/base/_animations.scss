@@ -1,0 +1,187 @@
+// ==========================================================================
+// _animations.scss
+// @keyframes globales del design system.
+// Incluye animaciones de orbes, fades, slides, flashes y utilidades.
+// Todos los valores dimensionales en rem.
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// FADE
+// --------------------------------------------------------------------------
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+// --------------------------------------------------------------------------
+// SLIDE
+// --------------------------------------------------------------------------
+
+@keyframes slideUp {
+  from { transform: translateY(0.625rem); opacity: 0; }    // 10px
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-0.625rem); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(0.625rem); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(-0.625rem); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+// --------------------------------------------------------------------------
+// UTILIDADES
+// --------------------------------------------------------------------------
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}
+
+@keyframes bounceIn {
+  0%   { transform: scale(0.3); opacity: 0; }
+  50%  { transform: scale(1.05); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+// --------------------------------------------------------------------------
+// GRADIENTE ANIMADO
+// --------------------------------------------------------------------------
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  25%  { background-position: 50% 0%; }
+  50%  { background-position: 100% 50%; }
+  75%  { background-position: 50% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
+// --------------------------------------------------------------------------
+// ORBES FLOTANTES
+// Cada orbe tiene trayectoria unica para evitar movimiento sincronizado.
+// Solo usan transform (GPU-accelerated).
+// --------------------------------------------------------------------------
+
+@keyframes floatOrb1 {
+  0%   { transform: translate(0, 0) scale(1) translateZ(0); }
+  25%  { transform: translate(1.875rem, -1.25rem) scale(1.05) translateZ(0); }
+  50%  { transform: translate(3.75rem, 1.875rem) scale(0.95) translateZ(0); }
+  75%  { transform: translate(1.25rem, 3.125rem) scale(1.02) translateZ(0); }
+  100% { transform: translate(-0.625rem, 1.25rem) scale(1) translateZ(0); }
+}
+
+@keyframes floatOrb2 {
+  0%   { transform: translate(0, 0) scale(1) translateZ(0); }
+  20%  { transform: translate(-2.5rem, 1.25rem) scale(1.03) translateZ(0); }
+  40%  { transform: translate(-1.25rem, -1.875rem) scale(0.97) translateZ(0); }
+  60%  { transform: translate(-3.125rem, -0.625rem) scale(1.05) translateZ(0); }
+  80%  { transform: translate(-1.25rem, 2.5rem) scale(0.98) translateZ(0); }
+  100% { transform: translate(0.625rem, -0.9375rem) scale(1) translateZ(0); }
+}
+
+@keyframes floatOrb3 {
+  0%   { transform: translate(0, 0) scale(1) translateZ(0); }
+  33%  { transform: translate(2.5rem, -1.5625rem) scale(1.04) translateZ(0); }
+  66%  { transform: translate(-1.875rem, 2.1875rem) scale(0.96) translateZ(0); }
+  100% { transform: translate(0.9375rem, -0.625rem) scale(1) translateZ(0); }
+}
+
+@keyframes floatOrb4 {
+  0%   { transform: translate(0, 0) scale(1) translateZ(0); }
+  20%  { transform: translate(-0.9375rem, 2.1875rem) scale(0.98) translateZ(0); }
+  40%  { transform: translate(1.5625rem, -1.25rem) scale(1.06) translateZ(0); }
+  60%  { transform: translate(-0.625rem, -2.1875rem) scale(0.95) translateZ(0); }
+  80%  { transform: translate(1.25rem, 0.9375rem) scale(1.03) translateZ(0); }
+  100% { transform: translate(-0.3125rem, -0.625rem) scale(1) translateZ(0); }
+}
+
+// --------------------------------------------------------------------------
+// FLASHES DE CD (se usaran en slices posteriores)
+// --------------------------------------------------------------------------
+
+@keyframes flashCheck {
+  0%   { background-color: rgba(#F97316, 0.6); }
+  25%  { background-color: rgba(#F97316, 0.6); }
+  100% { background-color: transparent; }
+}
+
+@keyframes flashTraverse {
+  0%   { background-color: rgba(#FCD34D, 0.4); }
+  25%  { background-color: rgba(#FCD34D, 0.4); }
+  100% { background-color: transparent; }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    border-color: rgba(#F97316, 0.3);
+    box-shadow: 0 0 0.3125rem rgba(#F97316, 0.1);
+  }
+  50% {
+    border-color: rgba(#F97316, 0.8);
+    box-shadow: 0 0 0.9375rem rgba(#F97316, 0.3);
+  }
+}
+
+// --------------------------------------------------------------------------
+// SHINE (efecto brillo diagonal)
+// --------------------------------------------------------------------------
+
+@keyframes shine {
+  0%   { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+// --------------------------------------------------------------------------
+// CLASES UTILITARIAS DE ANIMACION
+// --------------------------------------------------------------------------
+
+.animate-fade-in {
+  animation: fadeIn 200ms ease-out both;
+}
+
+.animate-slide-up {
+  animation: slideUp 300ms ease-out both;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+// --------------------------------------------------------------------------
+// PREFERS-REDUCED-MOTION
+// --------------------------------------------------------------------------
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
