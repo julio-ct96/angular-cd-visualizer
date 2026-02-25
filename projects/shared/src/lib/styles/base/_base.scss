@@ -1,0 +1,183 @@
+// ==========================================================================
+// _base.scss
+// Estilos base para la aplicacion + sistema de orbes flotantes.
+// ==========================================================================
+
+@use '../abstracts/variables' as vars;
+
+// --------------------------------------------------------------------------
+// HTML & BODY
+// --------------------------------------------------------------------------
+
+html {
+  background-color: vars.$color-bg-app;
+}
+
+body {
+  color: vars.$color-text-primary;
+  font-family: vars.$font-family-sans;
+  overflow-x: hidden;
+}
+
+a {
+  color: vars.$color-text-link;
+  transition: color vars.$duration-fast vars.$easing-default;
+
+  &:hover {
+    color: vars.$color-text-link-hover;
+  }
+}
+
+::selection {
+  background: rgba(vars.$color-primary, 0.3);
+  color: vars.$white;
+}
+
+:focus-visible {
+  outline: 0.125rem solid vars.$color-accent;
+  outline-offset: 0.125rem;
+}
+
+// --------------------------------------------------------------------------
+// SISTEMA DE ORBES FLOTANTES
+// --------------------------------------------------------------------------
+
+.bg-orbs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: vars.$z-index-orbs;
+  overflow: hidden;
+
+  // Variante NgZone
+  &--ngzone {
+    background: vars.$gradient-ngzone;
+  }
+
+  // Variante Zoneless
+  &--zoneless {
+    background: vars.$gradient-zoneless;
+  }
+}
+
+.bg-orbs__orb {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+  transform: translateZ(0);
+  pointer-events: none;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+// -- Orbes NgZone --
+
+.bg-orbs--ngzone .bg-orbs__orb--1 {
+  width: 25rem;               // 400px
+  height: 25rem;
+  background: #667eea;
+  filter: blur(6.25rem);      // 100px
+  opacity: 0.5;
+  top: -6.25rem;
+  left: -6.25rem;
+  animation-name: floatOrb1;
+  animation-duration: 20s;
+  animation-delay: 0s;
+}
+
+.bg-orbs--ngzone .bg-orbs__orb--2 {
+  width: 31.25rem;            // 500px
+  height: 31.25rem;
+  background: #764ba2;
+  filter: blur(7.5rem);       // 120px
+  opacity: 0.45;
+  bottom: -9.375rem;
+  right: -9.375rem;
+  animation-name: floatOrb2;
+  animation-duration: 25s;
+  animation-delay: -5s;
+}
+
+.bg-orbs--ngzone .bg-orbs__orb--3 {
+  width: 21.875rem;           // 350px
+  height: 21.875rem;
+  background: #f093fb;
+  filter: blur(5.625rem);     // 90px
+  opacity: 0.4;
+  top: 40%;
+  left: 30%;
+  animation-name: floatOrb3;
+  animation-duration: 18s;
+  animation-delay: -8s;
+}
+
+.bg-orbs--ngzone .bg-orbs__orb--4 {
+  width: 18.75rem;            // 300px
+  height: 18.75rem;
+  background: #4facfe;
+  filter: blur(5rem);         // 80px
+  opacity: 0.5;
+  top: 20%;
+  right: 20%;
+  animation-name: floatOrb4;
+  animation-duration: 22s;
+  animation-delay: -12s;
+}
+
+// -- Orbes Zoneless --
+
+.bg-orbs--zoneless .bg-orbs__orb--1 {
+  width: 28.125rem;           // 450px
+  height: 28.125rem;
+  background: #06d6a0;
+  filter: blur(6.875rem);     // 110px
+  opacity: 0.5;
+  top: -7.5rem;
+  left: -5rem;
+  animation-name: floatOrb1;
+  animation-duration: 22s;
+  animation-delay: 0s;
+}
+
+.bg-orbs--zoneless .bg-orbs__orb--2 {
+  width: 25rem;               // 400px
+  height: 25rem;
+  background: #764ba2;
+  filter: blur(6.25rem);      // 100px
+  opacity: 0.40;
+  bottom: -8.125rem;
+  right: -8.125rem;
+  animation-name: floatOrb2;
+  animation-duration: 20s;
+  animation-delay: -6s;
+}
+
+.bg-orbs--zoneless .bg-orbs__orb--3 {
+  width: 21.875rem;           // 350px
+  height: 21.875rem;
+  background: #4facfe;
+  filter: blur(5.625rem);     // 90px
+  opacity: 0.4;
+  top: 35%;
+  left: 25%;
+  animation-name: floatOrb3;
+  animation-duration: 19s;
+  animation-delay: -10s;
+}
+
+.bg-orbs--zoneless .bg-orbs__orb--4 {
+  width: 18.75rem;            // 300px
+  height: 18.75rem;
+  background: #34d399;
+  filter: blur(5rem);         // 80px
+  opacity: 0.45;
+  top: 60%;
+  right: 15%;
+  animation-name: floatOrb4;
+  animation-duration: 24s;
+  animation-delay: -14s;
+}
