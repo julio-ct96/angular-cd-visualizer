@@ -1,0 +1,234 @@
+// ==========================================================================
+// _base.scss
+// Estilos base para la aplicacion + fondo animado mesh gradient.
+// ==========================================================================
+
+@use '../abstracts/variables' as vars;
+
+// --------------------------------------------------------------------------
+// HTML & BODY
+// --------------------------------------------------------------------------
+
+html {
+  background-color: vars.$color-bg-app;
+}
+
+body {
+  color: vars.$color-text-primary;
+  font-family: vars.$font-family-sans;
+  overflow-x: hidden;
+}
+
+a {
+  color: vars.$color-text-link;
+  transition: color vars.$duration-fast vars.$easing-default;
+
+  &:hover {
+    color: vars.$color-text-link-hover;
+  }
+}
+
+::selection {
+  background: rgba(vars.$color-primary, 0.3);
+  color: vars.$white;
+}
+
+:focus-visible {
+  outline: 0.125rem solid vars.$color-accent;
+  outline-offset: 0.125rem;
+}
+
+// --------------------------------------------------------------------------
+// FONDO ANIMADO -- MESH GRADIENT
+// Puro CSS, sin divs extra. Usa ::before y ::after del body.
+// Tres capas: gradiente base (body) + mesh nebulosa (::before) + glow (::after)
+// --------------------------------------------------------------------------
+
+body {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  // Capa 1: gradiente base sutil como fallback y base de color
+  &::before,
+  &::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: vars.$z-index-orbs;
+  }
+
+  // Capa 2: mesh gradient estatico -- multiples radial-gradients superpuestos
+  // Crea un fondo tipo nebulosa rico en variacion de color
+  &::before {
+    opacity: 1;
+  }
+
+  // Capa 3: gradiente animado que se desplaza con movimiento wave
+  // background-size grande = mas recorrido, scale en keyframe = efecto respiracion
+  &::after {
+    opacity: 0.8;
+    background-size: 300% 300%;
+    animation: gradientShift vars.$duration-gradient ease-in-out infinite;
+    will-change: background-position, transform;
+  }
+}
+
+// --------------------------------------------------------------------------
+// VARIANTE NGZONE: paleta azul-indigo-purpura
+// --------------------------------------------------------------------------
+
+.app-bg--ngzone {
+  background-color: #0a0a1a;
+
+  &::before {
+    background:
+      // Nebulosa central indigo
+      radial-gradient(
+        ellipse 95% 65% at 50% 45%,
+        rgba(#4338CA, 0.17) 0%,
+        rgba(#4338CA, 0.06) 40%,
+        transparent 78%
+      ),
+      // Halo azul superior-izquierda
+      radial-gradient(
+        ellipse 80% 72% at 12% 12%,
+        rgba(#667eea, 0.20) 0%,
+        rgba(#667eea, 0.06) 45%,
+        transparent 78%
+      ),
+      // Resplandor purpura inferior-derecha
+      radial-gradient(
+        ellipse 85% 72% at 88% 84%,
+        rgba(#764ba2, 0.18) 0%,
+        rgba(#764ba2, 0.05) 45%,
+        transparent 78%
+      ),
+      // Toque magenta centro-derecha
+      radial-gradient(
+        ellipse 60% 52% at 72% 38%,
+        rgba(#f093fb, 0.09) 0%,
+        rgba(#f093fb, 0.025) 40%,
+        transparent 72%
+      ),
+      // Acento cyan superior-derecha
+      radial-gradient(
+        ellipse 55% 48% at 82% 12%,
+        rgba(#4facfe, 0.11) 0%,
+        rgba(#4facfe, 0.035) 40%,
+        transparent 72%
+      ),
+      // Base profunda
+      linear-gradient(
+        135deg,
+        #0a0a1a 0%,
+        #0d0d28 25%,
+        #151340 50%,
+        #12103a 75%,
+        #0a0a1a 100%
+      );
+  }
+
+  &::after {
+    background:
+      radial-gradient(
+        ellipse 78% 62% at 28% 72%,
+        rgba(#667eea, 0.24) 0%,
+        rgba(#667eea, 0.08) 45%,
+        transparent 78%
+      ),
+      radial-gradient(
+        ellipse 72% 58% at 78% 22%,
+        rgba(#764ba2, 0.24) 0%,
+        rgba(#764ba2, 0.08) 45%,
+        transparent 78%
+      ),
+      radial-gradient(
+        ellipse 70% 55% at 50% 50%,
+        rgba(#4facfe, 0.13) 0%,
+        rgba(#4facfe, 0.04) 40%,
+        transparent 72%
+      );
+    background-size: 300% 300%;
+  }
+}
+
+// --------------------------------------------------------------------------
+// VARIANTE ZONELESS: paleta verde-esmeralda-purpura
+// --------------------------------------------------------------------------
+
+.app-bg--zoneless {
+  background-color: #0a1a14;
+
+  &::before {
+    background:
+      // Nebulosa central esmeralda
+      radial-gradient(
+        ellipse 95% 65% at 50% 45%,
+        rgba(#047857, 0.16) 0%,
+        rgba(#047857, 0.06) 40%,
+        transparent 78%
+      ),
+      // Halo verde superior-izquierda
+      radial-gradient(
+        ellipse 80% 72% at 12% 12%,
+        rgba(#06d6a0, 0.18) 0%,
+        rgba(#06d6a0, 0.05) 45%,
+        transparent 78%
+      ),
+      // Resplandor purpura inferior-derecha
+      radial-gradient(
+        ellipse 85% 72% at 88% 84%,
+        rgba(#764ba2, 0.15) 0%,
+        rgba(#764ba2, 0.04) 45%,
+        transparent 78%
+      ),
+      // Toque cyan centro-derecha
+      radial-gradient(
+        ellipse 60% 52% at 72% 38%,
+        rgba(#4facfe, 0.08) 0%,
+        rgba(#4facfe, 0.025) 40%,
+        transparent 72%
+      ),
+      // Acento menta superior-derecha
+      radial-gradient(
+        ellipse 55% 48% at 82% 12%,
+        rgba(#34d399, 0.11) 0%,
+        rgba(#34d399, 0.035) 40%,
+        transparent 72%
+      ),
+      // Base profunda
+      linear-gradient(
+        135deg,
+        #0a1a14 0%,
+        #0b2219 25%,
+        #0d3028 50%,
+        #142538 75%,
+        #0a1a14 100%
+      );
+  }
+
+  &::after {
+    background:
+      radial-gradient(
+        ellipse 78% 62% at 28% 72%,
+        rgba(#06d6a0, 0.22) 0%,
+        rgba(#06d6a0, 0.07) 45%,
+        transparent 78%
+      ),
+      radial-gradient(
+        ellipse 72% 58% at 78% 22%,
+        rgba(#764ba2, 0.20) 0%,
+        rgba(#764ba2, 0.07) 45%,
+        transparent 78%
+      ),
+      radial-gradient(
+        ellipse 70% 55% at 50% 50%,
+        rgba(#34d399, 0.14) 0%,
+        rgba(#34d399, 0.04) 40%,
+        transparent 72%
+      );
+    background-size: 300% 300%;
+  }
+}

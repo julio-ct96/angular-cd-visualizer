@@ -33,8 +33,14 @@
               "zone.js"
             ],
             "styles": [
+              "projects/shared/src/lib/styles/main.scss",
               "projects/ngzone-app/src/styles.scss"
-            ]
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/shared/src/lib/styles"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -104,8 +110,14 @@
               }
             ],
             "styles": [
+              "projects/shared/src/lib/styles/main.scss",
               "projects/zoneless-app/src/styles.scss"
-            ]
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/shared/src/lib/styles"
+              ]
+            }
           },
           "configurations": {
             "production": {

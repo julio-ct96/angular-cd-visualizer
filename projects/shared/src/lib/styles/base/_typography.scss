@@ -1,0 +1,45 @@
+// ==========================================================================
+// _typography.scss
+// Escala tipografica y estilos de heading.
+// Fuentes cargadas via Google Fonts (link en index.html).
+// ==========================================================================
+
+@use '../abstracts/variables' as vars;
+
+body {
+  font-family: vars.$font-family-sans;
+  font-size: vars.$font-size-base;
+  font-weight: vars.$font-weight-regular;
+  line-height: vars.$line-height-normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: vars.$font-family-display;
+  font-weight: vars.$font-weight-semibold;
+  line-height: vars.$line-height-heading;
+  letter-spacing: vars.$letter-spacing-tight;
+}
+
+h1 { font-size: vars.$font-size-4xl; }
+h2 { font-size: vars.$font-size-3xl; }
+h3 { font-size: vars.$font-size-2xl; }
+h4 { font-size: vars.$font-size-xl; }
+h5 { font-size: vars.$font-size-lg; }
+h6 { font-size: vars.$font-size-md; }
+
+code,
+pre,
+kbd,
+samp {
+  font-family: vars.$font-family-mono;
+  font-size: vars.$font-size-sm;
+}
+
+small {
+  font-size: vars.$font-size-xs;
+}
+
+strong,
+b {
+  font-weight: vars.$font-weight-bold;
+}

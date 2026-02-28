@@ -1,0 +1,84 @@
+// ==========================================================================
+// _functions.scss
+// Funciones utilitarias del design system.
+// NO generan CSS. Solo se usan como valores en propiedades.
+// ==========================================================================
+
+@use 'sass:math';
+@use 'sass:color';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'variables' as vars;
+
+/// Convierte un valor en pixeles a rem.
+@function to-rem($px, $base: 16px) {
+  @if $px == 0 {
+    @return 0;
+  }
+
+  $px-value: $px;
+  @if math.is-unitless($px) == false {
+    @if math.unit($px) != 'px' {
+      @error 'to-rem() espera un valor en px, recibio #{math.unit($px)}.';
+    }
+    $px-value: math.div($px, 1px);
+  }
+
+  $base-value: $base;
+  @if math.is-unitless($base) == false {
+    $base-value: math.div($base, 1px);
+  }
+
+  @return math.div($px-value, $base-value) * 1rem;
+}
+
+/// Convierte un valor en pixeles a em.
+@function to-em($px, $base: 16px) {
+  @if $px == 0 {
+    @return 0;
+  }
+
+  $px-value: $px;
+  @if math.is-unitless($px) == false {
+    @if math.unit($px) != 'px' {
+      @error 'to-em() espera un valor en px, recibio #{math.unit($px)}.';
+    }
+    $px-value: math.div($px, 1px);
+  }
+
+  $base-value: $base;
+  @if math.is-unitless($base) == false {
+    $base-value: math.div($base, 1px);
+  }
+
+  @return math.div($px-value, $base-value) * 1em;
+}
+
+/// Retorna un color con opacidad ajustada.
+@function alpha($color, $opacity) {
+  @return rgba($color, $opacity);
+}
+
+/// Calcula spacing basado en el grid unit (8px).
+@function space($multiplier) {
+  @return $multiplier * vars.$spacing-unit;
+}
+
+/// Aclara un color mezclando con blanco.
+@function tint($color, $percentage) {
+  @return color.mix(vars.$white, $color, $percentage);
+}
+
+/// Oscurece un color mezclando con negro.
+@function shade($color, $percentage) {
+  @return color.mix(vars.$black, $color, $percentage);
+}
+
+/// Retorna el valor de un breakpoint por nombre.
+@function breakpoint($name) {
+  @if map.has-key(vars.$breakpoints, $name) {
+    @return map.get(vars.$breakpoints, $name);
+  } @else {
+    @error 'Breakpoint "#{$name}" no encontrado. Opciones: #{map.keys(vars.$breakpoints)}';
+  }
+}

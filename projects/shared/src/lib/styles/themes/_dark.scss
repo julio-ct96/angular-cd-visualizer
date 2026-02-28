@@ -1,0 +1,50 @@
+// ==========================================================================
+// _dark.scss
+// Tema oscuro (por defecto). CSS custom properties para Glassmorphism.
+// ==========================================================================
+
+@use '../abstracts/variables' as vars;
+@use '../abstracts/glass-tokens' as gt;
+
+:root {
+  // Colores de texto
+  --text-primary:    #{rgba(vars.$white, 0.95)};
+  --text-secondary:  #{rgba(vars.$white, 0.70)};
+  --text-tertiary:   #{rgba(vars.$white, 0.50)};
+  --text-muted:      #{rgba(vars.$white, 0.35)};
+
+  // Colores de fondo
+  --bg-app:          #{vars.$bg-deep-dark};
+  --bg-surface:      #{rgba(vars.$white, 0.03)};
+  --bg-elevated:     #{rgba(vars.$white, 0.06)};
+
+  // Colores de borde
+  --border-default:  #{rgba(vars.$white, 0.10)};
+  --border-subtle:   #{rgba(vars.$white, 0.06)};
+  --border-visible:  #{rgba(vars.$white, 0.18)};
+
+  // Colores de marca
+  --color-primary:   #{vars.$indigo-400};
+  --color-secondary: #{vars.$violet-500};
+  --color-accent:    #{vars.$cyan-400};
+
+  // Colores de estado
+  --color-success:   #{vars.$emerald-500};
+  --color-warning:   #{vars.$amber-500};
+  --color-error:     #{vars.$red-500};
+  --color-info:      #{vars.$blue-500};
+
+  // Glass
+  --glass-bg:        #{rgba(vars.$white, 0.08)};
+  --glass-border:    #{rgba(vars.$white, 0.15)};
+  --glass-blur:      0.75rem;
+  --glass-shadow:    0 0.5rem 2rem #{rgba(31, 38, 135, 0.37)};
+
+  // Estrategias CD
+  --color-default:   #{vars.$blue-500};
+  --color-onpush:    #{vars.$emerald-500};
+
+  // Flashes
+  --color-flash-check:    #{vars.$orange-500};
+  --color-flash-traverse: #{vars.$amber-300};
+}

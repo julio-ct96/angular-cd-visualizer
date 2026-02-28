@@ -1,0 +1,115 @@
+// ==========================================================================
+// _glass-mixins.scss
+// Mixins especificos del efecto Glassmorphism.
+// Todos los valores dimensionales en rem.
+// ==========================================================================
+
+@use 'variables' as vars;
+@use 'glass-tokens' as gt;
+
+/// Aplica efecto glass segun el nivel (1-5)
+@mixin glass($level: 2) {
+  @if $level == 1 {
+    background: gt.$glass-level-1-bg;
+    backdrop-filter: blur(gt.$glass-level-1-blur) saturate(1.8) brightness(1.1);
+    -webkit-backdrop-filter: blur(gt.$glass-level-1-blur) saturate(1.8) brightness(1.1);
+    border: 0.0625rem solid gt.$glass-level-1-border;
+    box-shadow: gt.$glass-level-1-shadow;
+  } @else if $level == 2 {
+    background: gt.$glass-level-2-bg;
+    backdrop-filter: blur(gt.$glass-level-2-blur) saturate(1.8) brightness(1.1);
+    -webkit-backdrop-filter: blur(gt.$glass-level-2-blur) saturate(1.8) brightness(1.1);
+    border: 0.0625rem solid gt.$glass-level-2-border;
+    box-shadow: gt.$glass-level-2-shadow;
+  } @else if $level == 3 {
+    background: gt.$glass-level-3-bg;
+    backdrop-filter: blur(gt.$glass-level-3-blur) saturate(1.8) brightness(1.1);
+    -webkit-backdrop-filter: blur(gt.$glass-level-3-blur) saturate(1.8) brightness(1.1);
+    border: 0.0625rem solid gt.$glass-level-3-border;
+    box-shadow: gt.$glass-level-3-shadow;
+  } @else if $level == 4 {
+    background: gt.$glass-level-4-bg;
+    backdrop-filter: blur(gt.$glass-level-4-blur) saturate(1.8) brightness(1.1);
+    -webkit-backdrop-filter: blur(gt.$glass-level-4-blur) saturate(1.8) brightness(1.1);
+    border: 0.0625rem solid gt.$glass-level-4-border;
+    box-shadow: gt.$glass-level-4-shadow;
+  } @else if $level == 5 {
+    background: gt.$glass-level-5-bg;
+    backdrop-filter: blur(gt.$glass-level-5-blur) saturate(1.8) brightness(1.1);
+    -webkit-backdrop-filter: blur(gt.$glass-level-5-blur) saturate(1.8) brightness(1.1);
+    border: 0.0625rem solid gt.$glass-level-5-border;
+    box-shadow: gt.$glass-level-5-shadow;
+  }
+
+  // Fallback para navegadores sin backdrop-filter
+  @supports not (backdrop-filter: blur(0.0625rem)) {
+    background: gt.$glass-bg-dark-opaque;
+  }
+}
+
+/// Superficie glass personalizable
+@mixin glass-surface($bg-opacity: 0.08, $blur: 0.75rem, $border-opacity: 0.12) {
+  background: rgba(vars.$white, $bg-opacity);
+  backdrop-filter: blur($blur) saturate(1.8) brightness(1.1);
+  -webkit-backdrop-filter: blur($blur) saturate(1.8) brightness(1.1);
+  border: 0.0625rem solid rgba(vars.$white, $border-opacity);
+
+  @supports not (backdrop-filter: blur(0.0625rem)) {
+    background: gt.$glass-bg-dark-opaque;
+  }
+}
+
+/// Borde glass
+@mixin glass-border($opacity: 0.12, $width: 0.0625rem) {
+  border: $width solid rgba(vars.$white, $opacity);
+}
+
+/// Sombra glass por nivel
+@mixin glass-shadow($level: 2) {
+  @if $level == 1 { box-shadow: gt.$glass-shadow-subtle; }
+  @else if $level == 2 { box-shadow: gt.$glass-shadow-default; }
+  @else if $level == 3 { box-shadow: gt.$glass-shadow-elevated; }
+  @else if $level == 4 { box-shadow: gt.$glass-shadow-prominent; }
+  @else if $level == 5 { box-shadow: gt.$glass-shadow-modal; }
+}
+
+/// Efecto hover para elementos glass
+@mixin glass-hover {
+  background: gt.$glass-bg-medium;
+  border-color: gt.$glass-border-hover;
+  box-shadow: gt.$glass-shadow-elevated;
+  transform: translateY(-0.0625rem);
+}
+
+/// Efecto focus para elementos glass
+@mixin glass-focus {
+  border-color: gt.$glass-border-focus;
+  outline: 0.125rem solid rgba(vars.$color-accent, 0.5);
+  outline-offset: 0.125rem;
+}
+
+/// Efecto active para elementos glass
+@mixin glass-active {
+  background: gt.$glass-bg-solid;
+  border-color: gt.$glass-border-active;
+  transform: translateY(0);
+}
+
+/// Fallback para navegadores sin backdrop-filter
+@mixin glass-fallback($fallback-bg: gt.$glass-bg-dark-opaque) {
+  @supports not (backdrop-filter: blur(0.0625rem)) {
+    background: $fallback-bg;
+  }
+}
+
+/// Superficie glass con tinte de color
+@mixin glass-tinted($color, $opacity: 0.12) {
+  background: rgba($color, $opacity);
+  backdrop-filter: blur(0.75rem) saturate(1.8) brightness(1.1);
+  -webkit-backdrop-filter: blur(0.75rem) saturate(1.8) brightness(1.1);
+  border: 0.0625rem solid rgba($color, 0.25);
+
+  @supports not (backdrop-filter: blur(0.0625rem)) {
+    background: rgba($color, 0.4);
+  }
+}
