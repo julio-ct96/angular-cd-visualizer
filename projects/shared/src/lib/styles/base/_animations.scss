@@ -1,7 +1,7 @@
 // ==========================================================================
 // _animations.scss
 // @keyframes globales del design system.
-// Incluye animaciones de orbes, fades, slides, flashes y utilidades.
+// Incluye fades, slides, flashes, gradientes y utilidades.
 // Todos los valores dimensionales en rem.
 // ==========================================================================
 
@@ -74,45 +74,6 @@
   50%  { background-position: 100% 50%; }
   75%  { background-position: 50% 100%; }
   100% { background-position: 0% 50%; }
-}
-
-// --------------------------------------------------------------------------
-// ORBES FLOTANTES
-// Cada orbe tiene trayectoria unica para evitar movimiento sincronizado.
-// Solo usan transform (GPU-accelerated).
-// --------------------------------------------------------------------------
-
-@keyframes floatOrb1 {
-  0%   { transform: translate(0, 0) scale(1) translateZ(0); }
-  25%  { transform: translate(1.875rem, -1.25rem) scale(1.05) translateZ(0); }
-  50%  { transform: translate(3.75rem, 1.875rem) scale(0.95) translateZ(0); }
-  75%  { transform: translate(1.25rem, 3.125rem) scale(1.02) translateZ(0); }
-  100% { transform: translate(-0.625rem, 1.25rem) scale(1) translateZ(0); }
-}
-
-@keyframes floatOrb2 {
-  0%   { transform: translate(0, 0) scale(1) translateZ(0); }
-  20%  { transform: translate(-2.5rem, 1.25rem) scale(1.03) translateZ(0); }
-  40%  { transform: translate(-1.25rem, -1.875rem) scale(0.97) translateZ(0); }
-  60%  { transform: translate(-3.125rem, -0.625rem) scale(1.05) translateZ(0); }
-  80%  { transform: translate(-1.25rem, 2.5rem) scale(0.98) translateZ(0); }
-  100% { transform: translate(0.625rem, -0.9375rem) scale(1) translateZ(0); }
-}
-
-@keyframes floatOrb3 {
-  0%   { transform: translate(0, 0) scale(1) translateZ(0); }
-  33%  { transform: translate(2.5rem, -1.5625rem) scale(1.04) translateZ(0); }
-  66%  { transform: translate(-1.875rem, 2.1875rem) scale(0.96) translateZ(0); }
-  100% { transform: translate(0.9375rem, -0.625rem) scale(1) translateZ(0); }
-}
-
-@keyframes floatOrb4 {
-  0%   { transform: translate(0, 0) scale(1) translateZ(0); }
-  20%  { transform: translate(-0.9375rem, 2.1875rem) scale(0.98) translateZ(0); }
-  40%  { transform: translate(1.5625rem, -1.25rem) scale(1.06) translateZ(0); }
-  60%  { transform: translate(-0.625rem, -2.1875rem) scale(0.95) translateZ(0); }
-  80%  { transform: translate(1.25rem, 0.9375rem) scale(1.03) translateZ(0); }
-  100% { transform: translate(-0.3125rem, -0.625rem) scale(1) translateZ(0); }
 }
 
 // --------------------------------------------------------------------------

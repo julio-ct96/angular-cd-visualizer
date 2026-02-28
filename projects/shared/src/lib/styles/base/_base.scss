@@ -1,6 +1,6 @@
 // ==========================================================================
 // _base.scss
-// Estilos base para la aplicacion + sistema de orbes flotantes.
+// Estilos base para la aplicacion + fondo animado mesh gradient.
 // ==========================================================================
 
 @use '../abstracts/variables' as vars;
@@ -39,145 +39,195 @@ a {
 }
 
 // --------------------------------------------------------------------------
-// SISTEMA DE ORBES FLOTANTES
+// FONDO ANIMADO -- MESH GRADIENT
+// Puro CSS, sin divs extra. Usa ::before y ::after del body.
+// Tres capas: gradiente base (body) + mesh nebulosa (::before) + glow (::after)
 // --------------------------------------------------------------------------
 
-.bg-orbs {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: vars.$z-index-orbs;
-  overflow: hidden;
+body {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
 
-  // Variante NgZone
-  &--ngzone {
-    background: vars.$gradient-ngzone;
+  // Capa 1: gradiente base sutil como fallback y base de color
+  &::before,
+  &::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: vars.$z-index-orbs;
   }
 
-  // Variante Zoneless
-  &--zoneless {
-    background: vars.$gradient-zoneless;
+  // Capa 2: mesh gradient estatico -- multiples radial-gradients superpuestos
+  // Crea un fondo tipo nebulosa rico en variacion de color
+  &::before {
+    opacity: 1;
+  }
+
+  // Capa 3: gradiente animado que se desplaza lentamente
+  // Da vida y movimiento sutil al fondo
+  &::after {
+    opacity: 0.5;
+    background-size: 200% 200%;
+    animation: gradientShift vars.$duration-gradient ease infinite;
   }
 }
 
-.bg-orbs__orb {
-  position: absolute;
-  border-radius: 50%;
-  will-change: transform;
-  transform: translateZ(0);
-  pointer-events: none;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+// --------------------------------------------------------------------------
+// VARIANTE NGZONE: paleta azul-indigo-purpura
+// --------------------------------------------------------------------------
+
+.app-bg--ngzone {
+  background-color: #0a0a1a;
+
+  &::before {
+    background:
+      // Nebulosa central indigo -- muy amplia, difusa
+      radial-gradient(
+        ellipse 120% 80% at 50% 45%,
+        rgba(#4338CA, 0.15) 0%,
+        rgba(#4338CA, 0.06) 40%,
+        transparent 80%
+      ),
+      // Halo azul superior-izquierda -- grande y suave
+      radial-gradient(
+        ellipse 100% 90% at 10% 10%,
+        rgba(#667eea, 0.18) 0%,
+        rgba(#667eea, 0.05) 45%,
+        transparent 80%
+      ),
+      // Resplandor purpura inferior-derecha -- difuminado gradual
+      radial-gradient(
+        ellipse 110% 90% at 90% 85%,
+        rgba(#764ba2, 0.16) 0%,
+        rgba(#764ba2, 0.04) 45%,
+        transparent 80%
+      ),
+      // Toque magenta centro-derecha -- sutil
+      radial-gradient(
+        ellipse 80% 70% at 72% 38%,
+        rgba(#f093fb, 0.07) 0%,
+        rgba(#f093fb, 0.02) 40%,
+        transparent 75%
+      ),
+      // Acento cyan superior-derecha -- apenas visible
+      radial-gradient(
+        ellipse 70% 60% at 82% 12%,
+        rgba(#4facfe, 0.09) 0%,
+        rgba(#4facfe, 0.03) 40%,
+        transparent 75%
+      ),
+      // Base profunda
+      linear-gradient(
+        135deg,
+        #0a0a1a 0%,
+        #0d0d28 25%,
+        #151340 50%,
+        #12103a 75%,
+        #0a0a1a 100%
+      );
+  }
+
+  &::after {
+    background:
+      radial-gradient(
+        ellipse 100% 80% at 28% 72%,
+        rgba(#667eea, 0.10) 0%,
+        rgba(#667eea, 0.03) 45%,
+        transparent 80%
+      ),
+      radial-gradient(
+        ellipse 90% 75% at 78% 22%,
+        rgba(#764ba2, 0.10) 0%,
+        rgba(#764ba2, 0.03) 45%,
+        transparent 80%
+      ),
+      radial-gradient(
+        ellipse 95% 70% at 50% 50%,
+        rgba(#4facfe, 0.05) 0%,
+        rgba(#4facfe, 0.015) 40%,
+        transparent 75%
+      );
+    background-size: 200% 200%;
+  }
 }
 
-// -- Orbes NgZone --
+// --------------------------------------------------------------------------
+// VARIANTE ZONELESS: paleta verde-esmeralda-purpura
+// --------------------------------------------------------------------------
 
-.bg-orbs--ngzone .bg-orbs__orb--1 {
-  width: 25rem;               // 400px
-  height: 25rem;
-  background: #667eea;
-  filter: blur(6.25rem);      // 100px
-  opacity: 0.5;
-  top: -6.25rem;
-  left: -6.25rem;
-  animation-name: floatOrb1;
-  animation-duration: 20s;
-  animation-delay: 0s;
-}
+.app-bg--zoneless {
+  background-color: #0a1a14;
 
-.bg-orbs--ngzone .bg-orbs__orb--2 {
-  width: 31.25rem;            // 500px
-  height: 31.25rem;
-  background: #764ba2;
-  filter: blur(7.5rem);       // 120px
-  opacity: 0.45;
-  bottom: -9.375rem;
-  right: -9.375rem;
-  animation-name: floatOrb2;
-  animation-duration: 25s;
-  animation-delay: -5s;
-}
+  &::before {
+    background:
+      // Nebulosa central esmeralda -- muy amplia, difusa
+      radial-gradient(
+        ellipse 120% 80% at 50% 45%,
+        rgba(#047857, 0.14) 0%,
+        rgba(#047857, 0.05) 40%,
+        transparent 80%
+      ),
+      // Halo verde superior-izquierda -- grande y suave
+      radial-gradient(
+        ellipse 100% 90% at 10% 10%,
+        rgba(#06d6a0, 0.15) 0%,
+        rgba(#06d6a0, 0.04) 45%,
+        transparent 80%
+      ),
+      // Resplandor purpura inferior-derecha -- difuminado gradual
+      radial-gradient(
+        ellipse 110% 90% at 90% 85%,
+        rgba(#764ba2, 0.13) 0%,
+        rgba(#764ba2, 0.04) 45%,
+        transparent 80%
+      ),
+      // Toque cyan centro-derecha -- sutil
+      radial-gradient(
+        ellipse 80% 70% at 72% 38%,
+        rgba(#4facfe, 0.06) 0%,
+        rgba(#4facfe, 0.02) 40%,
+        transparent 75%
+      ),
+      // Acento menta superior-derecha -- apenas visible
+      radial-gradient(
+        ellipse 70% 60% at 82% 12%,
+        rgba(#34d399, 0.09) 0%,
+        rgba(#34d399, 0.03) 40%,
+        transparent 75%
+      ),
+      // Base profunda
+      linear-gradient(
+        135deg,
+        #0a1a14 0%,
+        #0b2219 25%,
+        #0d3028 50%,
+        #142538 75%,
+        #0a1a14 100%
+      );
+  }
 
-.bg-orbs--ngzone .bg-orbs__orb--3 {
-  width: 21.875rem;           // 350px
-  height: 21.875rem;
-  background: #f093fb;
-  filter: blur(5.625rem);     // 90px
-  opacity: 0.4;
-  top: 40%;
-  left: 30%;
-  animation-name: floatOrb3;
-  animation-duration: 18s;
-  animation-delay: -8s;
-}
-
-.bg-orbs--ngzone .bg-orbs__orb--4 {
-  width: 18.75rem;            // 300px
-  height: 18.75rem;
-  background: #4facfe;
-  filter: blur(5rem);         // 80px
-  opacity: 0.5;
-  top: 20%;
-  right: 20%;
-  animation-name: floatOrb4;
-  animation-duration: 22s;
-  animation-delay: -12s;
-}
-
-// -- Orbes Zoneless --
-
-.bg-orbs--zoneless .bg-orbs__orb--1 {
-  width: 28.125rem;           // 450px
-  height: 28.125rem;
-  background: #06d6a0;
-  filter: blur(6.875rem);     // 110px
-  opacity: 0.5;
-  top: -7.5rem;
-  left: -5rem;
-  animation-name: floatOrb1;
-  animation-duration: 22s;
-  animation-delay: 0s;
-}
-
-.bg-orbs--zoneless .bg-orbs__orb--2 {
-  width: 25rem;               // 400px
-  height: 25rem;
-  background: #764ba2;
-  filter: blur(6.25rem);      // 100px
-  opacity: 0.40;
-  bottom: -8.125rem;
-  right: -8.125rem;
-  animation-name: floatOrb2;
-  animation-duration: 20s;
-  animation-delay: -6s;
-}
-
-.bg-orbs--zoneless .bg-orbs__orb--3 {
-  width: 21.875rem;           // 350px
-  height: 21.875rem;
-  background: #4facfe;
-  filter: blur(5.625rem);     // 90px
-  opacity: 0.4;
-  top: 35%;
-  left: 25%;
-  animation-name: floatOrb3;
-  animation-duration: 19s;
-  animation-delay: -10s;
-}
-
-.bg-orbs--zoneless .bg-orbs__orb--4 {
-  width: 18.75rem;            // 300px
-  height: 18.75rem;
-  background: #34d399;
-  filter: blur(5rem);         // 80px
-  opacity: 0.45;
-  top: 60%;
-  right: 15%;
-  animation-name: floatOrb4;
-  animation-duration: 24s;
-  animation-delay: -14s;
+  &::after {
+    background:
+      radial-gradient(
+        ellipse 100% 80% at 28% 72%,
+        rgba(#06d6a0, 0.08) 0%,
+        rgba(#06d6a0, 0.025) 45%,
+        transparent 80%
+      ),
+      radial-gradient(
+        ellipse 90% 75% at 78% 22%,
+        rgba(#764ba2, 0.08) 0%,
+        rgba(#764ba2, 0.025) 45%,
+        transparent 80%
+      ),
+      radial-gradient(
+        ellipse 95% 70% at 50% 50%,
+        rgba(#34d399, 0.05) 0%,
+        rgba(#34d399, 0.015) 40%,
+        transparent 75%
+      );
+    background-size: 200% 200%;
+  }
 }
