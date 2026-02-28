@@ -1,0 +1,156 @@
+// ==========================================================================
+// _card.scss
+// Componente Glass Card: superficie glass con efecto cristal esmerilado.
+// ==========================================================================
+
+@use '../abstracts' as *;
+
+// --------------------------------------------------------------------------
+// BLOQUE BASE
+// --------------------------------------------------------------------------
+
+.glass-card {
+  position: relative;
+  padding: $card-padding-md;
+  border-radius: $card-radius;
+  overflow: hidden;
+  color: $color-text-primary;
+
+  @include glass(2);
+
+  transition:
+    background $duration-hover $easing-default,
+    border-color $duration-hover $easing-default,
+    box-shadow $duration-hover $easing-default,
+    transform $duration-hover $easing-default;
+
+  // ------------------------------------------------------------------------
+  // ELEMENTOS BEM
+  // ------------------------------------------------------------------------
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: $spacing-4;
+    border-bottom: 0.0625rem solid $glass-border-subtle;
+    margin-bottom: $spacing-4;
+  }
+
+  &__title {
+    font-family: $font-family-display;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    line-height: $line-height-heading;
+    letter-spacing: $letter-spacing-tight;
+  }
+
+  &__subtitle {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-regular;
+    color: $color-text-secondary;
+    line-height: $line-height-normal;
+  }
+
+  &__body {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    line-height: $line-height-relaxed;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $spacing-3;
+    padding-top: $spacing-4;
+    border-top: 0.0625rem solid $glass-border-subtle;
+    margin-top: $spacing-4;
+  }
+
+  // ------------------------------------------------------------------------
+  // ESTADOS INTERACTIVOS
+  // ------------------------------------------------------------------------
+
+  &:hover {
+    @include glass-hover;
+
+    transform: translateY(-0.125rem);
+  }
+
+  &:focus-visible {
+    @include glass-focus;
+  }
+
+  // ------------------------------------------------------------------------
+  // MODIFICADORES
+  // ------------------------------------------------------------------------
+
+  &--elevated {
+    @include glass(3);
+
+    &:hover {
+      box-shadow: $glass-shadow-prominent;
+      transform: translateY(-0.25rem);
+    }
+  }
+
+  &--compact {
+    padding: $card-padding-sm;
+    border-radius: $radius-lg;
+
+    @include glass-surface(0.06, 0.5rem, 0.10);
+
+    box-shadow: $glass-shadow-subtle;
+
+    &:hover {
+      transform: translateY(-0.0625rem);
+      box-shadow: $glass-shadow-default;
+    }
+  }
+
+  &--tinted-success {
+    @supports (backdrop-filter: blur(0.0625rem)) or (-webkit-backdrop-filter: blur(0.0625rem)) {
+      background: $glass-bg-success;
+      border-color: $glass-border-success;
+    }
+  }
+
+  &--tinted-warning {
+    @supports (backdrop-filter: blur(0.0625rem)) or (-webkit-backdrop-filter: blur(0.0625rem)) {
+      background: $glass-bg-warning;
+      border-color: $glass-border-warning;
+    }
+  }
+
+  &--tinted-error {
+    @supports (backdrop-filter: blur(0.0625rem)) or (-webkit-backdrop-filter: blur(0.0625rem)) {
+      background: $glass-bg-error;
+      border-color: $glass-border-error;
+    }
+  }
+
+  &--tinted-info {
+    @supports (backdrop-filter: blur(0.0625rem)) or (-webkit-backdrop-filter: blur(0.0625rem)) {
+      background: $glass-bg-info;
+      border-color: $glass-border-info;
+    }
+  }
+
+  &--tinted-primary {
+    @supports (backdrop-filter: blur(0.0625rem)) or (-webkit-backdrop-filter: blur(0.0625rem)) {
+      background: $glass-bg-primary-tint;
+      border-color: $glass-border-primary-tint;
+    }
+  }
+
+  &--static {
+    cursor: default;
+
+    &:hover {
+      transform: none;
+      box-shadow: $glass-shadow-default;
+    }
+  }
+}
