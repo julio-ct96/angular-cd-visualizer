@@ -65,12 +65,13 @@ body {
     opacity: 1;
   }
 
-  // Capa 3: gradiente animado que se desplaza lentamente
-  // Da vida y movimiento sutil al fondo
+  // Capa 3: gradiente animado que se desplaza con movimiento wave
+  // background-size grande = mas recorrido, scale en keyframe = efecto respiracion
   &::after {
-    opacity: 0.5;
-    background-size: 200% 200%;
-    animation: gradientShift vars.$duration-gradient ease infinite;
+    opacity: 0.8;
+    background-size: 300% 300%;
+    animation: gradientShift vars.$duration-gradient ease-in-out infinite;
+    will-change: background-position, transform;
   }
 }
 
@@ -83,40 +84,40 @@ body {
 
   &::before {
     background:
-      // Nebulosa central indigo -- muy amplia, difusa
+      // Nebulosa central indigo
       radial-gradient(
-        ellipse 120% 80% at 50% 45%,
-        rgba(#4338CA, 0.15) 0%,
+        ellipse 95% 65% at 50% 45%,
+        rgba(#4338CA, 0.17) 0%,
         rgba(#4338CA, 0.06) 40%,
-        transparent 80%
+        transparent 78%
       ),
-      // Halo azul superior-izquierda -- grande y suave
+      // Halo azul superior-izquierda
       radial-gradient(
-        ellipse 100% 90% at 10% 10%,
-        rgba(#667eea, 0.18) 0%,
-        rgba(#667eea, 0.05) 45%,
-        transparent 80%
+        ellipse 80% 72% at 12% 12%,
+        rgba(#667eea, 0.20) 0%,
+        rgba(#667eea, 0.06) 45%,
+        transparent 78%
       ),
-      // Resplandor purpura inferior-derecha -- difuminado gradual
+      // Resplandor purpura inferior-derecha
       radial-gradient(
-        ellipse 110% 90% at 90% 85%,
-        rgba(#764ba2, 0.16) 0%,
-        rgba(#764ba2, 0.04) 45%,
-        transparent 80%
+        ellipse 85% 72% at 88% 84%,
+        rgba(#764ba2, 0.18) 0%,
+        rgba(#764ba2, 0.05) 45%,
+        transparent 78%
       ),
-      // Toque magenta centro-derecha -- sutil
+      // Toque magenta centro-derecha
       radial-gradient(
-        ellipse 80% 70% at 72% 38%,
-        rgba(#f093fb, 0.07) 0%,
-        rgba(#f093fb, 0.02) 40%,
-        transparent 75%
+        ellipse 60% 52% at 72% 38%,
+        rgba(#f093fb, 0.09) 0%,
+        rgba(#f093fb, 0.025) 40%,
+        transparent 72%
       ),
-      // Acento cyan superior-derecha -- apenas visible
+      // Acento cyan superior-derecha
       radial-gradient(
-        ellipse 70% 60% at 82% 12%,
-        rgba(#4facfe, 0.09) 0%,
-        rgba(#4facfe, 0.03) 40%,
-        transparent 75%
+        ellipse 55% 48% at 82% 12%,
+        rgba(#4facfe, 0.11) 0%,
+        rgba(#4facfe, 0.035) 40%,
+        transparent 72%
       ),
       // Base profunda
       linear-gradient(
@@ -132,24 +133,24 @@ body {
   &::after {
     background:
       radial-gradient(
-        ellipse 100% 80% at 28% 72%,
-        rgba(#667eea, 0.10) 0%,
-        rgba(#667eea, 0.03) 45%,
-        transparent 80%
+        ellipse 78% 62% at 28% 72%,
+        rgba(#667eea, 0.24) 0%,
+        rgba(#667eea, 0.08) 45%,
+        transparent 78%
       ),
       radial-gradient(
-        ellipse 90% 75% at 78% 22%,
-        rgba(#764ba2, 0.10) 0%,
-        rgba(#764ba2, 0.03) 45%,
-        transparent 80%
+        ellipse 72% 58% at 78% 22%,
+        rgba(#764ba2, 0.24) 0%,
+        rgba(#764ba2, 0.08) 45%,
+        transparent 78%
       ),
       radial-gradient(
-        ellipse 95% 70% at 50% 50%,
-        rgba(#4facfe, 0.05) 0%,
-        rgba(#4facfe, 0.015) 40%,
-        transparent 75%
+        ellipse 70% 55% at 50% 50%,
+        rgba(#4facfe, 0.13) 0%,
+        rgba(#4facfe, 0.04) 40%,
+        transparent 72%
       );
-    background-size: 200% 200%;
+    background-size: 300% 300%;
   }
 }
 
@@ -162,40 +163,40 @@ body {
 
   &::before {
     background:
-      // Nebulosa central esmeralda -- muy amplia, difusa
+      // Nebulosa central esmeralda
       radial-gradient(
-        ellipse 120% 80% at 50% 45%,
-        rgba(#047857, 0.14) 0%,
-        rgba(#047857, 0.05) 40%,
-        transparent 80%
+        ellipse 95% 65% at 50% 45%,
+        rgba(#047857, 0.16) 0%,
+        rgba(#047857, 0.06) 40%,
+        transparent 78%
       ),
-      // Halo verde superior-izquierda -- grande y suave
+      // Halo verde superior-izquierda
       radial-gradient(
-        ellipse 100% 90% at 10% 10%,
-        rgba(#06d6a0, 0.15) 0%,
-        rgba(#06d6a0, 0.04) 45%,
-        transparent 80%
+        ellipse 80% 72% at 12% 12%,
+        rgba(#06d6a0, 0.18) 0%,
+        rgba(#06d6a0, 0.05) 45%,
+        transparent 78%
       ),
-      // Resplandor purpura inferior-derecha -- difuminado gradual
+      // Resplandor purpura inferior-derecha
       radial-gradient(
-        ellipse 110% 90% at 90% 85%,
-        rgba(#764ba2, 0.13) 0%,
+        ellipse 85% 72% at 88% 84%,
+        rgba(#764ba2, 0.15) 0%,
         rgba(#764ba2, 0.04) 45%,
-        transparent 80%
+        transparent 78%
       ),
-      // Toque cyan centro-derecha -- sutil
+      // Toque cyan centro-derecha
       radial-gradient(
-        ellipse 80% 70% at 72% 38%,
-        rgba(#4facfe, 0.06) 0%,
-        rgba(#4facfe, 0.02) 40%,
-        transparent 75%
+        ellipse 60% 52% at 72% 38%,
+        rgba(#4facfe, 0.08) 0%,
+        rgba(#4facfe, 0.025) 40%,
+        transparent 72%
       ),
-      // Acento menta superior-derecha -- apenas visible
+      // Acento menta superior-derecha
       radial-gradient(
-        ellipse 70% 60% at 82% 12%,
-        rgba(#34d399, 0.09) 0%,
-        rgba(#34d399, 0.03) 40%,
-        transparent 75%
+        ellipse 55% 48% at 82% 12%,
+        rgba(#34d399, 0.11) 0%,
+        rgba(#34d399, 0.035) 40%,
+        transparent 72%
       ),
       // Base profunda
       linear-gradient(
@@ -211,23 +212,23 @@ body {
   &::after {
     background:
       radial-gradient(
-        ellipse 100% 80% at 28% 72%,
-        rgba(#06d6a0, 0.08) 0%,
-        rgba(#06d6a0, 0.025) 45%,
-        transparent 80%
+        ellipse 78% 62% at 28% 72%,
+        rgba(#06d6a0, 0.22) 0%,
+        rgba(#06d6a0, 0.07) 45%,
+        transparent 78%
       ),
       radial-gradient(
-        ellipse 90% 75% at 78% 22%,
-        rgba(#764ba2, 0.08) 0%,
-        rgba(#764ba2, 0.025) 45%,
-        transparent 80%
+        ellipse 72% 58% at 78% 22%,
+        rgba(#764ba2, 0.20) 0%,
+        rgba(#764ba2, 0.07) 45%,
+        transparent 78%
       ),
       radial-gradient(
-        ellipse 95% 70% at 50% 50%,
-        rgba(#34d399, 0.05) 0%,
-        rgba(#34d399, 0.015) 40%,
-        transparent 75%
+        ellipse 70% 55% at 50% 50%,
+        rgba(#34d399, 0.14) 0%,
+        rgba(#34d399, 0.04) 40%,
+        transparent 72%
       );
-    background-size: 200% 200%;
+    background-size: 300% 300%;
   }
 }
