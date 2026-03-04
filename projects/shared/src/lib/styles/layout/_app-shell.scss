@@ -1,0 +1,25 @@
+// =============================================================================
+// _app-shell.scss
+// Estructura CSS Grid principal de la aplicación.
+// Slice 3: solo header + main. Sidebar se añade en Slice 4.
+// =============================================================================
+
+@use '../abstracts' as *;
+
+.app-shell {
+  display: grid;
+  grid-template-rows: $header-height 1fr;
+  grid-template-columns: 1fr;
+  min-height: 100dvh;
+  position: relative;
+  z-index: $z-index-main;
+
+  &__header {
+    grid-row: 1;
+  }
+
+  &__main {
+    grid-row: 2;
+    overflow-y: auto;
+  }
+}
