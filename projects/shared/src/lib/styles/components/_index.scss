@@ -1,2 +1,4 @@
 // components/_index.scss
-// Barrel file - se populara en slices posteriores.
+// Barrel file de componentes del design system.
+
+@forward 'card';
