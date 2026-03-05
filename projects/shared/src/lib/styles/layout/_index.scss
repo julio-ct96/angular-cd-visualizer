@@ -1,2 +1,4 @@
 // layout/_index.scss
-// Barrel file - se populara en slices posteriores.
+
+@forward 'app-shell';
+@forward 'header';
