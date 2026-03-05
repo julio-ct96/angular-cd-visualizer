@@ -1,0 +1,9 @@
+<header class="app-header" [class]="variantClass()">
+  <div class="app-header__content">
+    <h1 class="app-header__title">Angular CD Visualizer</h1>
+    <span class="app-header__badge">{{ badgeText() }}</span>
+    <nav class="app-header__nav">
+      <a class="app-header__link" [href]="navHref()">{{ navLabel() }}</a>
+    </nav>
+  </div>
+</header>
