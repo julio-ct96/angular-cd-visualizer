@@ -1,10 +1,112 @@
 <div class="app-shell">
   <app-header class="app-shell__header" [appMode]="appMode"></app-header>
   <main class="app-shell__main">
-    <div class="app-demo">
-      <h1 class="app-demo__title">Angular CD Visualizer</h1>
-      <p class="app-demo__subtitle">SIN NgZone (Zoneless)</p>
-      <p class="app-demo__description">Slice 1: Foundation + Mesh Gradient Background</p>
-    </div>
+    <section class="card-catalog">
+      <h2 class="card-catalog__section-title">Base</h2>
+      <div class="card-catalog__grid">
+
+        <article class="glass-card" tabindex="0">
+          <header class="glass-card__header">
+            <h3 class="glass-card__title">Base</h3>
+            <span class="glass-card__subtitle">glass(2)</span>
+          </header>
+          <p class="glass-card__body">
+            Carta base con hover y focus-visible. Usa el nivel 2 de glass por defecto.
+          </p>
+          <footer class="glass-card__footer">
+            <span class="glass-card__subtitle">Footer</span>
+          </footer>
+        </article>
+
+        <article class="glass-card glass-card--elevated" tabindex="0">
+          <header class="glass-card__header">
+            <h3 class="glass-card__title">Elevated</h3>
+            <span class="glass-card__subtitle">glass(3)</span>
+          </header>
+          <p class="glass-card__body">
+            Mayor prominencia con glass nivel 3. Hover con sombra prominente y mayor desplazamiento.
+          </p>
+          <footer class="glass-card__footer">
+            <span class="glass-card__subtitle">Footer</span>
+          </footer>
+        </article>
+
+        <article class="glass-card glass-card--compact" tabindex="0">
+          <header class="glass-card__header">
+            <h3 class="glass-card__title">Compact</h3>
+            <span class="glass-card__subtitle">glass-surface</span>
+          </header>
+          <p class="glass-card__body">
+            Padding reducido, blur sutil. Ideal para elementos secundarios o listas.
+          </p>
+        </article>
+
+        <article class="glass-card glass-card--static">
+          <header class="glass-card__header">
+            <h3 class="glass-card__title">Static</h3>
+            <span class="glass-card__subtitle">sin hover</span>
+          </header>
+          <p class="glass-card__body">
+            Sin animación en hover ni cursor pointer. Para contenido no interactivo.
+          </p>
+        </article>
+
+      </div>
+
+      <h2 class="card-catalog__section-title">Tinted</h2>
+      <div class="card-catalog__grid">
+
+        <article class="glass-card glass-card--tinted-success" tabindex="0">
+          <header class="glass-card__header">
+            <h3 class="glass-card__title">Success</h3>
+            <span class="glass-card__subtitle">--tinted-success</span>
+          </header>
+          <p class="glass-card__body">
+            Tinte verde para estados de éxito o confirmación.
+          </p>
+        </article>
+
+        <article class="glass-card glass-card--tinted-warning" tabindex="0">
+          <header class="glass-card__header">
+            <h3 class="glass-card__title">Warning</h3>
+            <span class="glass-card__subtitle">--tinted-warning</span>
+          </header>
+          <p class="glass-card__body">
+            Tinte ámbar para alertas o advertencias.
+          </p>
+        </article>
+
+        <article class="glass-card glass-card--tinted-error" tabindex="0">
+          <header class="glass-card__header">
+            <h3 class="glass-card__title">Error</h3>
+            <span class="glass-card__subtitle">--tinted-error</span>
+          </header>
+          <p class="glass-card__body">
+            Tinte rojo para errores o estados críticos.
+          </p>
+        </article>
+
+        <article class="glass-card glass-card--tinted-info" tabindex="0">
+          <header class="glass-card__header">
+            <h3 class="glass-card__title">Info</h3>
+            <span class="glass-card__subtitle">--tinted-info</span>
+          </header>
+          <p class="glass-card__body">
+            Tinte azul para información o contexto adicional.
+          </p>
+        </article>
+
+        <article class="glass-card glass-card--tinted-primary" tabindex="0">
+          <header class="glass-card__header">
+            <h3 class="glass-card__title">Primary</h3>
+            <span class="glass-card__subtitle">--tinted-primary</span>
+          </header>
+          <p class="glass-card__body">
+            Tinte primario para destacar contenido principal.
+          </p>
+        </article>
+
+      </div>
+    </section>
   </main>
 </div>
