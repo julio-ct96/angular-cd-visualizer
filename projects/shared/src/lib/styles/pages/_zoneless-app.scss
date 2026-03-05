@@ -1,0 +1,10 @@
+// =============================================================================
+// _zoneless-app.scss
+// Overrides especificos de la app Zoneless: tinte verde en el header.
+// =============================================================================
+
+@use '../abstracts' as *;
+
+.zoneless-app .app-header {
+  @include glass-tinted($color-app-zoneless, 0.6);
+}

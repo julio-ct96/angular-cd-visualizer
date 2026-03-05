@@ -1,2 +1,4 @@
 // pages/_index.scss
-// Barrel file - se populara en slices posteriores.
+
+@forward 'ngzone-app';
+@forward 'zoneless-app';
