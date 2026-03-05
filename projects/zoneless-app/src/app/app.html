@@ -1,6 +1,10 @@
-<!-- Contenido principal -->
-<main class="app-demo">
-  <h1 class="app-demo__title">Angular CD Visualizer</h1>
-  <p class="app-demo__subtitle">SIN NgZone (Zoneless)</p>
-  <p class="app-demo__description">Slice 1: Foundation + Mesh Gradient Background</p>
-</main>
+<div class="app-shell">
+  <app-header class="app-shell__header" [appMode]="appMode"></app-header>
+  <main class="app-shell__main">
+    <div class="app-demo">
+      <h1 class="app-demo__title">Angular CD Visualizer</h1>
+      <p class="app-demo__subtitle">SIN NgZone (Zoneless)</p>
+      <p class="app-demo__description">Slice 1: Foundation + Mesh Gradient Background</p>
+    </div>
+  </main>
+</div>
