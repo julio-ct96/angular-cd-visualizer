@@ -1,0 +1,10 @@
+// =============================================================================
+// _ngzone-app.scss
+// Overrides especificos de la app NgZone: tinte azul en el header.
+// =============================================================================
+
+@use '../abstracts' as *;
+
+.ngzone-app .app-header {
+  @include glass-tinted($color-app-ngzone, 0.6);
+}
