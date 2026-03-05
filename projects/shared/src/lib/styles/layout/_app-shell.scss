@@ -10,7 +10,7 @@
   display: grid;
   grid-template-rows: $header-height 1fr;
   grid-template-columns: 1fr;
-  min-height: 100dvh;
+  height: 100dvh;
   position: relative;
   z-index: $z-index-main;
 
