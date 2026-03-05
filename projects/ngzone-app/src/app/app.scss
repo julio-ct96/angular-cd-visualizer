@@ -3,42 +3,28 @@
 :host {
   display: block;
   position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
 }
 
-.app-demo {
-  position: relative;
-  z-index: ds.$z-index-main;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  min-height: 100dvh;
-  text-align: center;
+.card-catalog {
   padding: ds.$spacing-8;
+  max-width: 75rem;
+  margin: 0 auto;
 
-  &__title {
+  &__section-title {
     font-family: ds.$font-family-display;
-    font-size: ds.$font-size-4xl;
-    font-weight: ds.$font-weight-bold;
-    color: ds.$color-text-primary;
-    text-shadow: 0 0.125rem 0.25rem rgba(ds.$black, 0.3);
-    margin-bottom: ds.$spacing-4;
-  }
-
-  &__subtitle {
-    font-family: ds.$font-family-mono;
     font-size: ds.$font-size-xl;
     font-weight: ds.$font-weight-semibold;
-    color: ds.$color-app-ngzone;
-    text-shadow: 0 0.0625rem 0.125rem rgba(ds.$black, 0.2);
+    color: ds.$color-text-primary;
     margin-bottom: ds.$spacing-6;
+
+    &:not(:first-child) {
+      margin-top: ds.$spacing-10;
+    }
   }
 
-  &__description {
-    font-size: ds.$font-size-md;
-    color: ds.$color-text-secondary;
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: ds.$spacing-6;
   }
 }
