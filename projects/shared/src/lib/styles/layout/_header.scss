@@ -1,0 +1,116 @@
+// =============================================================================
+// _header.scss
+// Glass Header: barra superior sticky con efecto Glassmorphism nivel 4.
+// =============================================================================
+
+@use '../abstracts' as *;
+
+// -----------------------------------------------------------------------------
+// BLOQUE BASE
+// -----------------------------------------------------------------------------
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $header-height;
+  padding: 0 $header-padding-x;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-header;
+
+  @include glass-surface($header-bg-opacity, $header-blur, $header-border-opacity);
+
+  border-bottom: $spacing-px solid $glass-border-subtle;
+  box-shadow: $glass-shadow-subtle;
+
+  transition:
+    background $duration-hover $easing-default,
+    border-color $duration-hover $easing-default,
+    box-shadow $duration-hover $easing-default;
+
+  // Highlight superior (refraccion de luz glass)
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 5%;
+    right: 5%;
+    height: $spacing-px;
+    background: linear-gradient(
+      90deg,
+      rgba($white, 0),
+      rgba($white, 0.15),
+      rgba($white, 0)
+    );
+    pointer-events: none;
+    z-index: $z-index-default;
+  }
+
+  // ---------------------------------------------------------------------------
+  // ELEMENTOS BEM
+  // ---------------------------------------------------------------------------
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: $spacing-4;
+  }
+
+  &__title {
+    font-family: $font-family-display;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    letter-spacing: $letter-spacing-tight;
+    text-shadow: 0 $spacing-px $spacing-3 rgba($black, 0.2);
+    white-space: nowrap;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: $spacing-1 $spacing-3;
+    border-radius: $radius-full;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-wide;
+    text-transform: uppercase;
+    color: $color-text-primary;
+
+    @include glass-surface(0.06, 0.5rem, 0.10);
+
+    box-shadow: $glass-shadow-subtle;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+    flex-shrink: 0;
+  }
+
+  &__link {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-text-link;
+    text-decoration: none;
+    padding: $spacing-1-5 $spacing-3;
+    border-radius: $radius-md;
+    border: $spacing-px solid rgba($color-text-link, 0.2);
+    transition: all $duration-hover $easing-default;
+    white-space: nowrap;
+
+    &:hover {
+      color: $color-text-link-hover;
+      background: rgba($color-text-link, 0.1);
+      border-color: rgba($color-text-link, 0.3);
+    }
+
+    &:focus-visible {
+      @include glass-focus;
+    }
+  }
+}
