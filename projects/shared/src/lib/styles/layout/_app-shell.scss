@@ -10,16 +10,20 @@
   display: grid;
   grid-template-rows: $header-height 1fr;
   grid-template-columns: 1fr;
-  min-height: 100dvh;
+  height: 100dvh;
   position: relative;
   z-index: $z-index-main;
 
   &__header {
     grid-row: 1;
+    grid-column: 1;
+    z-index: $z-index-header;
   }
 
   &__main {
-    grid-row: 2;
+    grid-row: 1 / -1;
+    grid-column: 1;
+    padding-top: $header-height;
     overflow-y: auto;
   }
 }

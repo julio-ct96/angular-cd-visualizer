@@ -30,25 +30,28 @@ $glass-bg-dark-opaque:  rgba(17, 25, 40, 0.85);
 
 // --------------------------------------------------------------------------
 // SUPERFICIES GLASS TINTADAS
+// Opacidades ajustadas de 0.12/0.25 a 0.18/0.35 para mejorar
+// la diferenciacion visual entre tintes sobre fondos con
+// backdrop-filter saturate(1.8). Ver decision en docs 04/08/15.
 // --------------------------------------------------------------------------
 
-$glass-bg-success:      rgba(vars.$emerald-500, 0.12);
-$glass-border-success:  rgba(vars.$emerald-500, 0.25);
+$glass-bg-success:      rgba(vars.$emerald-500, 0.18);
+$glass-border-success:  rgba(vars.$emerald-500, 0.35);
 
-$glass-bg-warning:      rgba(vars.$amber-500, 0.12);
-$glass-border-warning:  rgba(vars.$amber-500, 0.25);
+$glass-bg-warning:      rgba(vars.$amber-500, 0.18);
+$glass-border-warning:  rgba(vars.$amber-500, 0.35);
 
-$glass-bg-error:        rgba(vars.$red-500, 0.12);
-$glass-border-error:    rgba(vars.$red-500, 0.25);
+$glass-bg-error:        rgba(vars.$red-500, 0.18);
+$glass-border-error:    rgba(vars.$red-500, 0.35);
 
-$glass-bg-info:         rgba(vars.$blue-500, 0.12);
-$glass-border-info:     rgba(vars.$blue-500, 0.25);
+$glass-bg-info:         rgba(vars.$blue-500, 0.18);
+$glass-border-info:     rgba(vars.$blue-500, 0.35);
 
-$glass-bg-primary-tint:   rgba(vars.$indigo-400, 0.12);
-$glass-border-primary-tint: rgba(vars.$indigo-400, 0.25);
+$glass-bg-primary-tint:   rgba(vars.$indigo-400, 0.18);
+$glass-border-primary-tint: rgba(vars.$indigo-400, 0.35);
 
-$glass-bg-accent-tint:    rgba(vars.$cyan-400, 0.12);
-$glass-border-accent-tint:  rgba(vars.$cyan-400, 0.25);
+$glass-bg-accent-tint:    rgba(vars.$cyan-400, 0.18);
+$glass-border-accent-tint:  rgba(vars.$cyan-400, 0.35);
 
 // --------------------------------------------------------------------------
 // BORDES GLASS

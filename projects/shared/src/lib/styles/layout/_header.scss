@@ -21,6 +21,7 @@
 
   @include glass-surface($header-bg-opacity, $header-blur, $header-border-opacity);
 
+  border: none;
   border-bottom: $spacing-px solid $glass-border-subtle;
   box-shadow: $glass-shadow-subtle;
 
