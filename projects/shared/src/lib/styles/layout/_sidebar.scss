@@ -1,0 +1,37 @@
+// =============================================================================
+// _sidebar.scss
+// Sidebar: panel lateral derecho con efecto Glassmorphism nivel 2.
+// Contiene el panel de control y logs.
+// =============================================================================
+
+@use '../abstracts' as *;
+
+.sidebar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  z-index: $z-index-sidebar;
+
+  @include glass-surface($sidebar-bg-opacity, $sidebar-blur, $sidebar-border-opacity);
+
+  border: none;
+  border-left: $spacing-px solid $glass-border-default;
+  box-shadow: $glass-shadow-default;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: $sidebar-padding;
+    flex: 1;
+    min-height: 0;
+  }
+
+  &__section {
+    & + & {
+      margin-top: $spacing-4;
+      padding-top: $spacing-4;
+      border-top: $spacing-px solid $glass-border-subtle;
+    }
+  }
+}
