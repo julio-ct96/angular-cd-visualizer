@@ -102,12 +102,13 @@
   }
 }
 
-/// Superficie glass con tinte de color
-@mixin glass-tinted($color, $opacity: 0.12) {
+/// Superficie glass con tinte de color.
+/// Usa saturate(1.4) en vez de 1.8 para que el tinte domine sobre el fondo.
+@mixin glass-tinted($color, $opacity: 0.18) {
   background: rgba($color, $opacity);
-  backdrop-filter: blur(0.75rem) saturate(1.8) brightness(1.1);
-  -webkit-backdrop-filter: blur(0.75rem) saturate(1.8) brightness(1.1);
-  border: 0.0625rem solid rgba($color, 0.25);
+  backdrop-filter: blur(0.75rem) saturate(1.4) brightness(1.1);
+  -webkit-backdrop-filter: blur(0.75rem) saturate(1.4) brightness(1.1);
+  border: 0.0625rem solid rgba($color, 0.35);
 
   @supports not (backdrop-filter: blur(0.0625rem)) {
     background: rgba($color, 0.4);

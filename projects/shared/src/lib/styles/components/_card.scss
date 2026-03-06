@@ -113,6 +113,18 @@
     }
   }
 
+  // -- Tinted: saturate reducido (1.4) para que el tinte domine sobre el fondo
+  &--tinted-success,
+  &--tinted-warning,
+  &--tinted-error,
+  &--tinted-info,
+  &--tinted-primary {
+    @supports (backdrop-filter: blur(0.0625rem)) or (-webkit-backdrop-filter: blur(0.0625rem)) {
+      backdrop-filter: blur(0.75rem) saturate(1.4) brightness(1.1);
+      -webkit-backdrop-filter: blur(0.75rem) saturate(1.4) brightness(1.1);
+    }
+  }
+
   &--tinted-success {
     @supports (backdrop-filter: blur(0.0625rem)) or (-webkit-backdrop-filter: blur(0.0625rem)) {
       background: $glass-bg-success;
