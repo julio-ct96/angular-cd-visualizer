@@ -1,7 +1,7 @@
 // =============================================================================
 // _app-shell.scss
 // Estructura CSS Grid principal de la aplicación.
-// Slice 3: solo header + main. Sidebar se añade en Slice 4.
+// Layout 3 zonas: header (full width), main (izquierda), sidebar (derecha).
 // =============================================================================
 
 @use '../abstracts' as *;
@@ -9,21 +9,25 @@
 .app-shell {
   display: grid;
   grid-template-rows: $header-height 1fr;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr $sidebar-width;
+  grid-template-areas:
+    'header  header'
+    'main    sidebar';
   height: 100dvh;
   position: relative;
   z-index: $z-index-main;
 
   &__header {
-    grid-row: 1;
-    grid-column: 1;
+    grid-area: header;
     z-index: $z-index-header;
   }
 
   &__main {
-    grid-row: 1 / -1;
-    grid-column: 1;
-    padding-top: $header-height;
+    grid-area: main;
     overflow-y: auto;
+  }
+
+  &__sidebar {
+    grid-area: sidebar;
   }
 }
