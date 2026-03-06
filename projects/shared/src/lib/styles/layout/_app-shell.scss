@@ -16,10 +16,14 @@
 
   &__header {
     grid-row: 1;
+    grid-column: 1;
+    z-index: $z-index-header;
   }
 
   &__main {
-    grid-row: 2;
+    grid-row: 1 / -1;
+    grid-column: 1;
+    padding-top: $header-height;
     overflow-y: auto;
   }
 }
