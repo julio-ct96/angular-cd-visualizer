@@ -2,6 +2,8 @@
 // _app-shell.scss
 // Estructura CSS Grid principal de la aplicación.
 // Layout 3 zonas: header (full width), main (izquierda), sidebar (derecha).
+// Main y sidebar se solapan con el header (row 1 / -1) para que el contenido
+// pase por detras del glass del header al hacer scroll.
 // =============================================================================
 
 @use '../abstracts' as *;
@@ -10,24 +12,26 @@
   display: grid;
   grid-template-rows: $header-height 1fr;
   grid-template-columns: 1fr $sidebar-width;
-  grid-template-areas:
-    'header  header'
-    'main    sidebar';
   height: 100dvh;
   position: relative;
   z-index: $z-index-main;
 
   &__header {
-    grid-area: header;
+    grid-row: 1;
+    grid-column: 1 / -1;
     z-index: $z-index-header;
   }
 
   &__main {
-    grid-area: main;
+    grid-row: 1 / -1;
+    grid-column: 1;
+    padding-top: $header-height;
     overflow-y: auto;
   }
 
   &__sidebar {
-    grid-area: sidebar;
+    grid-row: 1 / -1;
+    grid-column: 2;
+    padding-top: $header-height;
   }
 }
