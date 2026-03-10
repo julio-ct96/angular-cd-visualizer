@@ -14,6 +14,8 @@
   overflow: auto;
   min-height: 0;
 
+  @include custom-scrollbar;
+
   @include glass-surface(0.03, 0.3125rem, 0.06);
 
   border: none;

@@ -13,6 +13,8 @@
   overflow-y: auto;
   z-index: $z-index-sidebar;
 
+  @include custom-scrollbar;
+
   @include glass-surface($sidebar-bg-opacity, $sidebar-blur, $sidebar-border-opacity);
 
   border: none;
